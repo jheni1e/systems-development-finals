@@ -1,6 +1,6 @@
 import { now } from "mongoose";
-import { createTicketDTO, updateTicketDTO } from "../dtos/ticketDTO"
-import { prisma } from "../lib/prisma";
+import { createTicketDTO, updateTicketDTO } from "../dtos/ticketDTO.js"
+import { prisma } from "../lib/prisma.js";
 
 export const createTicket = async (data: createTicketDTO) => {
     const { title, description, sector, priority } = data;

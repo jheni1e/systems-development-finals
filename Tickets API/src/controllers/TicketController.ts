@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { createTicketDTO, updateTicketDTO } from "../dtos/ticketDTO";
-import { deleteTicket, createTicket, showTickets, updateTicket, finishTicket, startTicket, showTicketById } from "../services/ticket.service";
+import { createTicketDTO, updateTicketDTO } from "../dtos/ticketDTO.js";
+import { deleteTicket, createTicket, showTickets, updateTicket, finishTicket, startTicket, showTicketById } from "../services/ticket.service.js";
 
 export default class UserController {
     static async create(req: Request, res: Response) {

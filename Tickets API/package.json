@@ -8,6 +8,7 @@
   },
   "author": "",
   "license": "ISC",
+  "type": "module",
   "description": "",
   "devDependencies": {
     "@types/config": "^3.3.5",
