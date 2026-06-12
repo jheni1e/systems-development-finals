@@ -6,7 +6,6 @@ export interface createTicketDTO {
 }
 
 export interface updateTicketDTO {
-    id: number
     title?: string
     description?: string
     sector?: string

@@ -5,7 +5,9 @@ import { prisma } from "../lib/prisma.js";
 export const createTicket = async (data: createTicketDTO) => {
     const { title, description, sector, priority } = data;
 
-    return await prisma.ticket.create({
+    console.log(title, description, sector, priority)
+
+    return await prisma.ticket.create ({
         data: {
             title: title,
             description: description,
@@ -20,14 +22,14 @@ export const showTickets = async () => {
     return await prisma.ticket.findMany();
 }
 
-export const showTicketById = async (id: number) => {
-    return await prisma.ticket.findOne({
-        where: { id: id }
+export const showTicketById = async (idTicket: number) => {
+    return await prisma.ticket.findMany({
+        where: { id: idTicket }
     });
 }
 
-export const updateTicket = async (data: updateTicketDTO) => {
-    const { id, title, description, sector, priority } = data;
+export const updateTicket = async (data: updateTicketDTO, id: number) => {
+    const { title, description, sector, priority } = data;
 
     return await prisma.ticket.update({
         where: { id: id },

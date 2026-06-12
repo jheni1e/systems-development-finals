@@ -27,10 +27,14 @@ export default class UserController {
     }
 
     static async showById(req: Request, res: Response) {
-        const id = parseInt(req.params[0], 10);
+        const id: number = parseInt(req.params.id.toString());
 
         try {
             const ticket = await showTicketById(id);
+
+            if (!ticket) {
+                return res.status(404).send({ response: 'Ticket não encontrado.' });
+            }
 
             return res.status(200).send(ticket);
         }
@@ -40,10 +44,11 @@ export default class UserController {
     }
 
     static async update(req: Request, res: Response) {
-        const { id } = req.params;
+        const id: number = parseInt(req.params.id.toString());
         const data: updateTicketDTO = req.body;
+
         try {
-            await updateTicket(data);
+            await updateTicket(data, id);
 
             return res.status(200).send({ response: 'Atualizado' });
         }
@@ -53,7 +58,7 @@ export default class UserController {
     }
 
     static async delete(req: Request, res: Response) {
-        const id = parseInt(req.params[0], 10);
+        const id: number = parseInt(req.params.id.toString());
         
         try {
             await deleteTicket(id);
@@ -66,7 +71,7 @@ export default class UserController {
     }
 
     static async start(req: Request, res: Response) {
-        const id = parseInt(req.params[0], 10);
+        const id: number = parseInt(req.params.id.toString());
         
         try {
             await startTicket(id);
@@ -79,7 +84,7 @@ export default class UserController {
     }
 
     static async finish(req: Request, res: Response) {
-        const id = parseInt(req.params[0], 10);
+        const id: number = parseInt(req.params.id.toString());
         
         try {
             await finishTicket(id);

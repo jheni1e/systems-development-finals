@@ -16,5 +16,5 @@ model Ticket {
   priority String
   status String
   createdAt DateTime @default (now())
-  finishedAt DateTime
+  finishedAt DateTime?
 }
